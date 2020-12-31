@@ -8,9 +8,33 @@ Welcome to Bert and Beyond's documentation!
 
 .. toctree::
    :maxdepth: 1
-   :caption: Contents
+   :caption: Earlier PLMs
    
    README.md
+
+.. toctree::
+   :maxdepth: 1
+   :caption: Bigger PLMs
+
+.. toctree::
+   :maxdepth: 1
+   :caption: Smaller PLMs
+
+.. toctree::
+   :maxdepth: 1
+   :caption: Smarter PLMs
+
+.. toctree::
+   :maxdepth: 1
+   :caption: Tricker PLMs
+
+.. toctree::
+   :maxdepth: 1
+   :caption: PLMs Analyze
+
+.. toctree::
+   :maxdepth: 1
+   :caption: PLMs 实战指南
 
 
 
