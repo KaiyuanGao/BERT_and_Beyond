@@ -37,7 +37,8 @@ Welcome to Bert and Beyond's documentation!
 .. toctree::
    :maxdepth: 1
    :caption: PLMs 实战指南
-
+   
+   hands_on_plms/bert_multi_cls.md
 
 
 Indices and tables
