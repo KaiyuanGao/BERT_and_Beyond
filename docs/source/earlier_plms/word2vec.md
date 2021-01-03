@@ -1,1 +1,1 @@
-# TBD
+# word2vec
