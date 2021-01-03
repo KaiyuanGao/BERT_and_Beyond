@@ -31,11 +31,20 @@ Welcome to Bert and Beyond's documentation!
 .. toctree::
    :maxdepth: 1
    :caption: Tricker PLMs
+   
+   tricker_plms/bert_flow.md
+
+.. toctree::
+   :maxdepth: 1
+   :caption: Tricker PLMs
+
+   cross_domain_plms/tbd.md
 
 .. toctree::
    :maxdepth: 1
    :caption: PLMs Analyze
-
+   
+   plm_analyze/tbd.md
 .. toctree::
    :maxdepth: 1
    :caption: PLMs 实战指南
