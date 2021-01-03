@@ -15,6 +15,8 @@ Welcome to Bert and Beyond's documentation!
 .. toctree::
    :maxdepth: 1
    :caption: Bigger PLMs
+   
+   bigger_plms/Roberta.md
 
 .. toctree::
    :maxdepth: 1
