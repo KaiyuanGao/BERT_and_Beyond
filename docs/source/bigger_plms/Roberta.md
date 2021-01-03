@@ -30,7 +30,7 @@
 
 
 
-## **动态掩码**
+### **动态掩码**
 
 在原始的BERT实现中，mask操作是在数据预处理的时候就完成的，这样在每个训练epoch中数据的mask位置都是相同的，这显然是不太合适的。而动态mask则是对于每一个输入都生成一次新的mask，这对于更大训练数据集/更大训练步数是很重要的。实验结果如下，dynamic masking效果是比static好了一点点，但是四舍五入等于一样...
 
@@ -38,7 +38,7 @@
 
 
 
-## **NSP任务**
+### **NSP任务**
 
 同XLNet/SpanBERT一样，作者在这里也是发现NSP任务对下游任务并不会起到帮助甚至有点小危害，
 
@@ -46,7 +46,7 @@
 
 ‌
 
-## **reference**
+### **reference**
 
 - [官方开源代码](https://github.com/pytorch/fairseq/tree/master/examples/roberta)
 - [重回榜首的BERT改进版开源了，千块V100、160GB纯文本的大模型](https://zhuanlan.zhihu.com/p/75899781)
