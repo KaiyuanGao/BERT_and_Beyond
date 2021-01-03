@@ -10,7 +10,7 @@ Welcome to Bert and Beyond's documentation!
    :maxdepth: 1
    :caption: Earlier PLMs
    
-   README.md
+   earlier_plms/word2vec.md
 
 .. toctree::
    :maxdepth: 1
@@ -22,10 +22,12 @@ Welcome to Bert and Beyond's documentation!
    :maxdepth: 1
    :caption: Smaller PLMs
 
+   smaller_plms/albert.md
 .. toctree::
    :maxdepth: 1
    :caption: Smarter PLMs
 
+   smarter_plms/ernie_thu.md
 .. toctree::
    :maxdepth: 1
    :caption: Tricker PLMs
