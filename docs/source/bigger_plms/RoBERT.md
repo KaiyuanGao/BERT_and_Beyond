@@ -5,8 +5,6 @@
 - 地址：https://arxiv.org/pdf/1907.11692.pdf
 - 源码：https://github.com/pytorch/fairseq
 
-
-
 ‌
 
 看了一眼RoBERTa的作者和前面SpanBERT的作者基本都是一样的...可以...这都不是重点！重点是-----XLNet屠榜了，BERT坐不住了，文章指出BERT是完完全全的**underfit**，于是他们又对BERT进行了一次改造计划，当然，最终结果又是：屠榜。恭喜BERT重回榜首  :)
