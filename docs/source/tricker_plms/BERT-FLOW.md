@@ -1,3 +1,10 @@
+![](../../../pics/BERT-Flow/bert-flow-1.jpeg)
+
+- 论文：On the Sentence Embeddings from Pre-trained Language Models
+- 地址：https://arxiv.org/abs/2011.05864
+- 源码：https://github.com/bohanli/BERT-flow
+
+
 > 无监督方法将 Bert 产生的非平滑各向异性的句子语义空间分布转换为各向同性的高斯分布。
 
 ### 动机和核心问题
@@ -67,25 +74,25 @@ $$
 
 - 语义相似度
 
-    ![](../../../pics/BERT-Flow/bert-flow-1.jpeg)
+    ![](../../../pics/BERT-Flow/bert-flow-2.jpeg)
 
     NLI 表示在 NLI（SNLI+MNLI）上训练 Flow，target 表示在所有数据集上训练 Flow。
 
 - QA 任务
 
-    ![](../../../pics/BERT-Flow/bert-flow-2.jpeg)
+    ![](../../../pics/BERT-Flow/bert-flow-3.jpeg)
 
     X-NLI 表示使用 NLI 监督，这个是 Sentence-Bert 里面的方法，对比需要。这个任务本来是判断 QA 对的 Label 是 “包含” 或 “不包含”，本文用问题和答案的相似度来表示 Label（1 表示包含，0 表示不包含）。
 
 - 其他 Embedding
 
-    ![](../../../pics/BERT-Flow/bert-flow-3.jpeg)
+    ![](../../../pics/BERT-Flow/bert-flow-4.jpeg)
 
     其中，SN 表示标准归一化，即对 Sentence Embedding Z 标准化。NATSV 表示 Nulling Away Top-k Singular Vectors，即通过使顶部的奇异向量无效，可以避免嵌入的各向异性，并可以实现更好的语义相似性。
 
 - 词汇相似度
 
-    ![](../../../pics/BERT-Flow/bert-flow-4.jpeg)
+    ![](../../../pics/BERT-Flow/bert-flow-5.jpeg)
 
     词汇相似度用编辑距离衡量，然后看两个相似度的相关性。标准相关性为 -24.61，Bert 的是 -50.49，Bert-Flow 的论文没说。论文觉得，很多时候改变一个字都有可能会完全影响语义，但是 Bert 因为相关性强，所以改变一个或少数几个（主要是编辑距离小于等于 4 的情况）字，语义可能改变很小。
 
