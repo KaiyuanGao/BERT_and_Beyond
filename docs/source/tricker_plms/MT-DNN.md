@@ -1,3 +1,5 @@
+## MT-DNN
+
 ![](../../../pics/MT-DNN/mt-dnn-1.jpeg)
 
 - 论文：Multi-Task Deep Neural Networks for Natural Language Understanding
@@ -54,7 +56,7 @@
 
 ![](../../../pics/MT-DNN/mt-dnn-5.jpeg)
 
-**reference**
+### reference
 
 - [NLP的bert和后bert时代的挑战](https://zhuanlan.zhihu.com/p/66676144)
 - [GLUE基准新突破：微软多任务模型首次超越自然语言人类基准](https://zhuanlan.zhihu.com/p/68602190)

@@ -1,3 +1,5 @@
+## GPT-2.0
+
 ![](../../../pics/GPT-2.0/gpt-2.0-1.jpeg)
 
 - 论文：Language Models are Unsupervised Multitask Learners
@@ -43,7 +45,7 @@ emmmmmm， 仔细想想倒也没错，术业有专攻嘛。okay，看了那么�
 
 
 
-**reference**
+### reference
 
 - [Better Language Models and Their Implications](https://openai.com/blog/better-language-models/#task6)
 - [效果惊人的GPT 2.0模型：它告诉了我们什么](https://zhuanlan.zhihu.com/p/56865533)

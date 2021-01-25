@@ -1,10 +1,14 @@
+## BART
+
+
+
 ![](../../../pics/BART/bart-1.jpeg)
 
 - 论文：BART: Denoising Sequence-to-Sequence Pre-training for Natural Language Generation, Translation, and Comprehension
 - 地址：https://arxiv.org/pdf/1910.13461.pdf
 - 源码：NULL
 
-## 写在前面
+### 写在前面
 
 最近 huggingface 的 transformer 库，增加了 BART 模型，Bart 是该库中最早的 Seq2Seq 模型之一，在文本生成任务，例如摘要抽取方面达到了 SOTA 的结果。
 
@@ -18,7 +22,7 @@
 
 下面我们来看看 BART。
 
-## 背景：Seq2Seq预训练
+### 背景：Seq2Seq预训练
 
 去年 10 月，来自 Google 和 Facebook 的团队分别发布了新的 Transformer-related 论文：T5 和 BART。 这两篇论文在如抽象总结和对话等生成任务上都取得了更好的下游性能，主要有两个改变：
 
@@ -81,7 +85,7 @@ BART 论文的图很好地说明了这一点：
 
 在上述示例中，原始文档为`A B C D E`。在编码之前将文本`[C，D]`屏蔽掉，又在 B 之前插入一个额外的掩码，然后将损坏的文档`A _ B _ E`作为编码器的输入。解码器必须使用编码器的输出和先前未损坏的标记来重建原始文档。
 
-## Summarization
+### Summarization
 
 在`摘要生成`任务中，输入序列是我们要总结的文档，输出序列是一段事实摘要。 Seq2Seq 架构可直接用于摘要任务，而无需任何新的操作， 并且预训练任务也非常适合下游任务。 下表中的数字证实了这一点：在 CNN / Daily Mail 抽象摘要任务中，所有新的 Seq2Seq 模型都比那些 old less-fancy 模型做得好得多，而 BART 的表现尤其出色。
 
@@ -93,7 +97,7 @@ BART 论文的图很好地说明了这一点：
 
 `UniLM`是一种 “Prefix-LM”，具有与 Bart 和 T5 相似的 masking 策略
 
-## Demo: BartForConditionalGeneration
+### Demo: BartForConditionalGeneration
 
 这一节来看看如何用几行代码就完成一个摘要抽取任务。
 

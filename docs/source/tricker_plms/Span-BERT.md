@@ -1,3 +1,5 @@
+## Span-BERT
+
 ![](../../../pics/Span-BERT/span-bert-1.jpeg)
 
 - 论文：SpanBERT: Improving Pre-training by Representing and Predicting Spans
@@ -12,7 +14,7 @@
 
 okay，让我们来看看这个 span masking 和 SBO 到底是怎么实现的。
 
-## Span Masking
+### Span Masking
 
 对于输入 $X=\left(x_{1}, \ldots, x_{n}\right)$, span masking 的具体做法是：首先通过几何分布 $ℓ∼Geo(p)$ 采样出 span 的长度，然后随机选择 span 的起始位置。如此迭代进行，直到采样出的 span 长度达到 15% 的输入长度。
 
@@ -22,7 +24,7 @@ okay，让我们来看看这个 span masking 和 SBO 到底是怎么实现的。
 
 ![](../../../pics/Span-BERT/span-bert-2.jpeg)
 
-## Span-Boundary Objective (SBO)
+### Span-Boundary Objective (SBO)
 
 SBO 的思想就是通过已知的边界去预测未知的被 mask 掉的那些 token。具体而言，对于一个 span $\left(x_{s}, \ldots, x_{e}\right)$ ,其中 $x_s$ *和* $x_e$ 分别是 span 的起始和终止位置。对于每一个被 mask 的词，SBO 使用 span 起始位置的前一个 token $x_{s-1}$ 和终止位置的后一个 token $x_{e+1}$ 以及被 mask 掉 token 的位置向量 $p_{i}$ 来表示该 token：
 $$
@@ -35,7 +37,7 @@ $$
 
 ![](../../../pics/Span-BERT/span-bert-3.jpeg)
 
-## Single-Sequence Training
+### Single-Sequence Training
 
 其实这里就是对原始 BERT 中 NSP 任务的解读，在作者们的实验中发现不使用 NSP 进行预训练得到的模型效果反而更好，即 **Single-Sequence Training**，下表中 **2seq** 表示`segment_a + segment_b`的输入形式 
 

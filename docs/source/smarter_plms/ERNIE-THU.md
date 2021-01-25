@@ -1,3 +1,7 @@
+## ERNIE-THU
+
+
+
 ![](../../../pics/ERNIE-THU/ernie-thu-1.jpeg)
 
 - 论文：ERNIE: Enhanced Language Representation with Informative Entities
@@ -71,13 +75,13 @@ $$
 $$
 最终的输出为最顶层的 Aggregator 的 token embedding 和 entity embedding。
 
-**改进的预训练**
+### 改进的预训练
 
 除了跟bert一样的MLM和NSP预训练任务，本文还提出了另外一种适用于信息融合的预训练方式，**denoising entity auto-encoder (dEA).** 跟baidu的还是有点不一样，这里是有对齐后的entity sequence输入的，而百度的是直接去学习entity embedding。dEA 的目的就是要求模型能够根据给定的实体序列和文本序列来预测对应的实体：
 $$
 p\left(e_{j} \mid w_{i}\right)=\frac{\exp \left(\operatorname{linear}\left(\boldsymbol{w}_{i}^{o}\right) \cdot \boldsymbol{e}_{j}\right)}{\sum_{k=1}^{m} \exp \left(\operatorname{linear}\left(\boldsymbol{w}_{i}^{o}\right) \cdot \boldsymbol{e}_{k}\right)}
 $$
-**微调**
+### 微调
 
 为了使得模型可以更广泛地适用于不同的 NLP 任务，作者也学习 BERT 设计了不同的特殊的 token：
 
@@ -89,7 +93,7 @@ $$
 
 试验部分也略过了哈~感觉有些部分还不是很清晰，需要看看源码...
 
-**reference**
+### reference
 
 - [ACL 2019将会有哪些值得关注的论文？](https://www.zhihu.com/question/324223170/answer/686289852)
 - [ACL 2019 | 基于知识增强的语言表示模型，多项NLP任务表现超越BERT](https://mp.weixin.qq.com/s?__biz=MzIwMTc4ODE0Mw==&mid=2247497535&idx=1&sn=41565f76368c028cf6cc9204e6f36384&chksm=96ea28bfa19da1a945923fceca0351c50ffa99958a57eced44ea19ef14fbbe3fcfb519b49fe1&scene=0&xtrack=1&key=5e1a44c6b19fdb90d4f39f57aad794cb225ae4b125c74547f68efd27e4a440ed12133aa3846f3246a59c3300e60af78eac543952b7f66291b3bb98aabab234a5c4cdbf011e018ccd51c55ad70dcbc145&ascene=1&uin=MTA1NDIwMzgyMQ==&devicetype=Windows 10&version=62060833&lang=zh_CN&pass_ticket=GXxtNBoDpN/xpinrCr5v68DE8xs9w5fNjEzknaTiKJSZER4aMw4zfhObcR/hFHhL)

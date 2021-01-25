@@ -1,3 +1,5 @@
+## K-BERT
+
 ![](../../../pics/K-BERT/k-bert-1.jpeg)
 
 - 论文：K-BERT: Enabling Language Representation with Knowledge Graph
@@ -15,7 +17,7 @@ Okay，理解了大致思想之后我们来分析具体的实现方式。模型�
 
 ![](../../../pics/K-BERT/k-bert-2.jpeg)
 
-## Knowledge Layer
+### Knowledge Layer
 
 这一层的输入是原始句子 $s={w_{0}, w_{1}, w_{2}, \dots, w_{n}}$ ，输出是融入 KG 信息后的句子树
 $$
@@ -27,7 +29,7 @@ $$
 - **K-Query**  输入句子中涉及的所有实体都被选中，并查询它们在 KG 中对应的三元组 EEE ；
 - **K-Inject** 将查询到的三元组注入到句子 sss 中，将 EEE 中的三元组插入到它们相应的位置，并生成一个句子树 ttt 。
 
-## Embedding Layer
+### Embedding Layer
 
 K-BERT 的输入和原始 BERT 的输入形式是一样的，都需要 token embedding, position embedding 和 segment embedding，不同的是，K-BERT 的输入是一个句子树，因此问题就变成了句子树到序列化句子的转化，并同时保留结构化信息。
 
@@ -41,7 +43,7 @@ K-BERT 的输入和原始 BERT 的输入形式是一样的，都需要 token emb
 
 通过重排后的句子显然是毫无意义的，这里利用了 position embedding 来还原回结构信息。还是以上图为例，重排后，`CEO`和`Apple` 被插入在了`Cook`和`is`之间，但是`is`应该是接在`Cook`之后一个位置的，那么我们直接把`is`的 position number 设置为 3 即可。Segment embedding 部分同 BERT 一样。
 
-## Seeing Layer
+### Seeing Layer
 
 作者认为 Seeing layer 的 mask matrix 是 K-BERT 有效的关键，主要解决了前面提到的 **Knowledge Noise** 问题。栗子中`China`仅仅修饰的是`Beijing`，和`Apple`半毛钱关系没有，因此像这种 token 之间就不应该有相互影响。为此定义一个可见矩阵，判断句子中的单词之间是否彼此影响
 $$
@@ -51,7 +53,7 @@ M_{i j}=\left\{\begin{array}{cc}
 \end{array}\right.
 $$
 
-## Mask-Transformer
+### Mask-Transformer
 
 BERT 中的 Transformer Encoder 不能接受上述可见矩阵作为输入，因此需要稍作改进。Mask-Transformer 是一层层 mask-self-attention 的堆叠，
 $$

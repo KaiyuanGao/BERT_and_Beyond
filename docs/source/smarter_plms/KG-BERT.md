@@ -1,3 +1,5 @@
+## KG-BERT
+
 ![](../../../pics/KG-BERT/kg-bert-1.jpeg)
 
 - 论文：KG-BERT: BERT for Knowledge Graph Completion

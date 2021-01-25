@@ -1,3 +1,7 @@
+## Video-BERT
+
+
+
 ![](../../../pics/VideoBERT/video-bert-1.jpeg)
 
 - 论文：VideoBERT: A Joint Model for Video and Language Representation Learning
@@ -25,7 +29,7 @@
 
 后面实验的面包披萨蛋糕洋葱圈啊就不馋大家了~
 
-**reference**
+###  Reference	
 
 - [BERT fintune 的艺术](https://zhuanlan.zhihu.com/p/62642374)
 
