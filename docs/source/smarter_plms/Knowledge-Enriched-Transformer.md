@@ -1,6 +1,6 @@
 ## KET
 
-![](../../../pics/Knowledge-Enriched Transformer/ke-trans-1.jpeg)
+![](../../../pics/Knowledge-Enriched-Transformer/ke-trans-1.jpeg)
 
 - 论文：Knowledge-Enriched Transformer for Emotion Detection in Textual Conversations
 - 地址：https://arxiv.org/abs/1909.10681
@@ -16,7 +16,7 @@
 $$
 \Phi = \prod _ { i = 1 } ^ { N } \prod _ { j = 1 } ^ { N _ { i } } p \left( Y _ { j } ^ { i } | X _ { j } ^ { i } , X _ { j - 1 } ^ { i } , \ldots , X _ { 1 } ^ { i } ; \theta \right)
 $$
-![](../../../pics/Knowledge-Enriched Transformer/ke-trans-3.jpeg)
+![](../../../pics/Knowledge-Enriched-Transformer/ke-trans-3.jpeg)
 
 ### Knowledge Retrieval
 
