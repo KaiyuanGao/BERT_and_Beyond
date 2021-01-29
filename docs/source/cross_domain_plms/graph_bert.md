@@ -30,9 +30,9 @@ enjoy~
 #### 子图采样
 
 为了更好地处理大图（并行化），graph-bert选择在采样子图上进行训练。使用了一种基于图亲密度矩阵 $\mathbf{S} \in \mathbb{R}^{|\mathcal{V}| \times|\mathcal{V}|}$ 的采样方案：**top-k intimacy**，其中 $S(i, j)$ 表示节点 $v_{i}$ 和 结点 $v_{j}$ 之间的亲密度，计算公式为：
-$$
-\mathbf{S}=\alpha \cdot(\mathbf{I}-(1-\alpha) \cdot \overline{\mathbf{A}})^{-1}
-$$
+
+![](https://latex.codecogs.com/svg.latex?\mathbf{S}=\alpha%20\cdot(\mathbf{I}-(1-\alpha)%20\cdot%20\overline{\mathbf{A}})^{-1})
+
 其中，$\alpha$ 是一个[0, 1]之间的超参数（通常取0.15），$\overline{\mathbf{A}}=\mathbf{A} \mathbf{D}^{-1}$ 表示列规范化邻接矩阵，$A$ 为图的邻接矩阵， $D$ 为对应的对角矩阵 $\mathbf{D}(i, i)=\sum_{j} \mathbf{A}(i, j)$。
 
 那么对于一个给定的目标结点，就可以利用上面定义的亲密度来找出其上下文结点，计算公式为：
