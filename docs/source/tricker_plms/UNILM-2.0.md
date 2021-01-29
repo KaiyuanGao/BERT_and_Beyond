@@ -14,7 +14,7 @@
 
 而本文使用的`Partially Auto-Regressive`则可以认为是对`Auto-regressive`的扩展，将 token 级别扩展到了span 级别，并且不限制方向性。
 
-## 模型预训练
+### 模型预训练
 
 UNILM 2.0 的模型框架没有什么好说的，骨架网络就是 Transformer，跟主流的都差不多，论文的亮点在于预训练目标。在一个统一的 BERT 式的网络基础上，设计了两种预训练目标，**自编码**和**部分自回归**，分别对应双向语言模型和 seq2seq 语言模型， 然后进行联合训练：
 $$
@@ -22,7 +22,7 @@ $$
 $$
 ![](../../../pics/UNILM-2.0/unilm-2.0-3.jpeg)
 
-### 自编码
+#### 自编码
 
 上图中左半部分，自编码（Auto Encoding，AE）就像 BERT 一样，利用已知的上下文信息来单独地计算被 MASK掉的 token 的概率。
 $$
@@ -30,7 +30,7 @@ $$
 $$
 其中， $M=({m_{1}, \cdots, m_{|M|}})$ 为被 mask 词集合，$x_{\backslash M}$ 表示除去 mask 词集的其他词*，* $x_{m}$ 则表示被 mask 词， D 表示训练语料集合。
 
-### 部分自回归
+#### 部分自回归
 
 上图中右半部分，部分自回归（Partially AutoRegressive，PAR ）在每一步因式分解的时候可以选择预测单个token 或多个 tokens（为连续的 span），当所有步均选择预测一个 token 时，则会变为自回归模式。 
 $$
@@ -45,13 +45,13 @@ $$
 $$
 其中， $\mathbb{E}_{M}$ 是分解的期望，但是在预训练中只随机采用一种分解
 
-### 关于Mask的策略
+#### 关于Mask的策略
 
 对于输入，随机采样 15% 作为 mask 集合，这其中 40% 的概率 mask 掉长度为 2 到 6 的 n-gram 连续 span，60% 的概率 mask 单独一个 token。
 
 ![](../../../pics/UNILM-2.0/unilm-2.0-4.jpeg)
 
-### 伪掩码语言模型
+#### 伪掩码语言模型
 
 正如前面提到的，如果要用部分自回归的话，每一步预测时可用的 tokens 是不一样的，因此如果直接使原始BERT 中的 MLM，必须为每个分解步骤构建一个新的 Cloze 实例，这将导致部分自回归的预训练不可行。
 
@@ -70,7 +70,7 @@ $$
 
 可以看到，[M] 和已知的 $\left(x_{1}, x_{3}, x_{6}\right)$ 可以被全局 attend。[M] 对 AE 部分来说，因为是 bidirectional，所以互相都允许 attend；对 PAR 部分，可以提供”完整“的 context（比如对 P4/P5 来说，就可以看到 M2），这样避免了之前 autoregressive 不能看 future context，导致一些位置被完全 masked。
 
-### 模型输入
+#### 模型输入
 
 在预训练阶段，模型输入形式为：`[SOS] S1 [EOS] S2 [EOS]`，其中 S1 和 S2 是连续的文本，[SOS] 和 [EOS] 是表示文本起始以及结束的特殊标记，输入 token 的表示是 word embedding, absolute position embedding 以及 segment embedding 的加和。
 
@@ -79,7 +79,7 @@ $$
 - 对于 NLU 任务，输入为`“[SOS] TEXT [EOS]`，然后用`[SOS]`作为text的表示用于下游任务；
 - 对于 NLG 任务，输入为`[SOS] SRC [EOS] TGT [EOS]` ，一旦解码出`[EOS]`，则停止解码，解码阶段使用beam search；
 
-## 实验部分
+### 实验部分
 
 论文中也展示了很多具体实验，QA、GLUE、Abstractive Summarization、Question Generation，就不展开，粗瞄一眼效果都很不错的样子，感兴趣的自行阅读~
 
